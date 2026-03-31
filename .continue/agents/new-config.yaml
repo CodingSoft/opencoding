@@ -1,0 +1,30 @@
+# This is an example configuration file
+# To learn more, see the full config.yaml reference: https://docs.continue.dev/reference
+
+name: Coding Config
+version: 1.0.0
+schema: v1
+
+# Define which models can be used
+# https://docs.continue.dev/customization/models
+models:
+  - name: GLM-4.6V-Flash
+    provider: nvidia
+    model: glm-4.6-v-flash
+    apiKey: ${{ secrets.ZAI_API_KEY }}
+    apiBase: https://api.z.ai/api/paas/v4
+    roles:
+      - chat
+      - edit
+      - apply
+    capabilities:
+      - tool_use
+      - image_input
+      - reasoning
+      - function_calling
+
+
+# MCP Servers that Continue can access
+# https://docs.continue.dev/customization/mcp-tools
+mcpServers:
+  - uses: anthropic/memory-mcp
