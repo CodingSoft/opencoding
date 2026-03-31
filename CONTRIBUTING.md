@@ -14,10 +14,10 @@ However, any UI or core product feature must go through a design review with the
 
 If you are unsure if a PR would be accepted, feel free to ask a maintainer or look for issues with any of the following labels:
 
-- [`help wanted`](https://github.com/CodingSoft/codingsoft/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted)
-- [`good first issue`](https://github.com/CodingSoft/codingsoft/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22)
-- [`bug`](https://github.com/CodingSoft/codingsoft/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug)
-- [`perf`](https://github.com/CodingSoft/codingsoft/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22)
+- [`help wanted`](https://github.com/CodingSoft/opencoding/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted)
+- [`good first issue`](https://github.com/CodingSoft/opencoding/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22)
+- [`bug`](https://github.com/CodingSoft/opencoding/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug)
+- [`perf`](https://github.com/CodingSoft/opencoding/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22)
 
 > [!NOTE]
 > PRs that ignore these guardrails will likely be closed.
@@ -27,7 +27,7 @@ Want to take on an issue? Leave a comment and a maintainer may assign it to you 
 ## Adding New Providers
 
 New providers shouldn't require many if ANY code changes, but if you want to add support for a new provider first make a PR to:
-https://github.com/CodingSoft/models.dev
+https://github.com/CodingSoft/opencoding-models.git
 
 ## Developing CodingSoft
 
@@ -47,7 +47,7 @@ By default, `bun dev` runs CodingSoft in the `packages/codingsoft` directory. To
 bun dev <directory>
 ```
 
-To run CodingSoft in the root of the codingsoft repo itself:
+To run CodingSoft in the root of the opencoding repo itself:
 
 ```bash
 bun dev .
@@ -58,20 +58,20 @@ bun dev .
 To compile a standalone executable:
 
 ```bash
-./packages/codingsoft/script/build.ts --single
+./packages/opencode/script/build.ts --single
 ```
 
 Then run it with:
 
 ```bash
-./packages/codingsoft/dist/codingsoft-<platform>/bin/codingsoft
+./packages/opencode/dist/codingsoft-<platform>/bin/codingsoft
 ```
 
 Replace `<platform>` with your platform (e.g., `darwin-arm64`, `linux-x64`).
 
 - Core pieces:
-  - `packages/codingsoft`: CodingSoft core business logic & server.
-  - `packages/codingsoft/src/cli/cmd/tui/`: The TUI code, written in SolidJS with [opentui](https://github.com/sst/opentui)
+  - `packages/opencode`: CodingSoft core business logic & server.
+  - `packages/opencode/src/cli/cmd/tui/`: The TUI code, written in SolidJS with [opentui](https://github.com/sst/opentui)
   - `packages/app`: The shared web UI components, written in SolidJS
   - `packages/desktop`: The native desktop app, built with Tauri (wraps `packages/app`)
   - `packages/plugin`: Source for `@codingsoft/plugin`
@@ -151,7 +151,7 @@ This runs `bun run --cwd packages/desktop build` automatically via Tauri's `befo
 > Running the desktop app requires additional Tauri dependencies (Rust toolchain, platform-specific libraries). See the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) for setup instructions.
 
 > [!NOTE]
-> If you make changes to the API or SDK (e.g. `packages/codingsoft/src/server/server.ts`), run `./script/generate.ts` to regenerate the SDK and related files.
+> If you make changes to the API or SDK (e.g. `packages/opencode/src/server/server.ts`), run `./script/generate.ts` to regenerate the SDK and related files.
 
 Please try to follow the [style guide](./AGENTS.md)
 
@@ -236,7 +236,7 @@ You can optionally include a scope to indicate which package is affected:
 
 - `feat(app):` feature in the app package
 - `fix(desktop):` bug fix in the desktop package
-- `chore(codingsoft):` maintenance in the codingsoft package
+- `chore(opencode):` maintenance in the opencode package
 
 Examples:
 

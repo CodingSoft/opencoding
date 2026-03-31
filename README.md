@@ -38,7 +38,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![CodingSoft Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://codingsoft.org)
+[![CodingSoft Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencoding.vercel.app)
 
 ---
 
@@ -57,7 +57,7 @@ brew install codingsoft # macOS and Linux (official brew formula, updated less)
 sudo pacman -S codingsoft # Arch Linux (Stable)
 paru -S codingsoft-bin # Arch Linux (Latest from AUR)
 mise use -g codingsoft # Any OS
-nix run nixpkgs#codingsoft # or github:CodingSoft/codingsoft for latest dev branch
+nix run nixpkgs#codingsoft # or github:CodingSoft/opencoding for latest dev branch
 ```
 
 > [!TIP]
@@ -65,7 +65,7 @@ nix run nixpkgs#codingsoft # or github:CodingSoft/codingsoft for latest dev bran
 
 ### Desktop App (BETA)
 
-CodingSoft is also available as a desktop application. Download directly from the [releases page](https://github.com/CodingSoft/codingsoft/releases) or [codingsoft.org/download](https://codingsoft.org/download).
+CodingSoft is also available as a desktop application. Download directly from the [releases page](https://github.com/CodingSoft/opencoding/releases) or [opencoding.vercel.app/download](https://opencoding.vercel.app/download).
 
 | Platform              | Download                                |
 | --------------------- | --------------------------------------- |
@@ -92,8 +92,8 @@ The install script respects the following priority order for the installation pa
 
 ```bash
 # Examples
-CODINGSOFT_INSTALL_DIR=/usr/local/bin curl -fsSL https://codingsoft.org/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://codingsoft.org/install | bash
+CODINGSOFT_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencoding.vercel.app/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencoding.vercel.app/install | bash
 ```
 
 ### Agents
@@ -109,11 +109,11 @@ CodingSoft includes two built-in agents you can switch between with the `Tab` ke
 Also included is a **general** subagent for complex searches and multistep tasks.
 This is used internally and can be invoked using `@general` in messages.
 
-Learn more about [agents](https://codingsoft.org/docs/agents).
+Learn more about [agents](https://opencoding.vercel.app/docs/agents).
 
 ### Documentation
 
-For more info on how to configure CodingSoft, [**head over to our docs**](https://codingsoft.org/docs).
+For more info on how to configure CodingSoft, [**head over to our docs**](https://opencoding.vercel.app/docs).
 
 ### Contributing
 
@@ -130,7 +130,7 @@ If you are working on a project that's related to CodingSoft and is using "codin
 It's very similar to Claude Code in terms of capability. Here are the key differences:
 
 - 100% open source
-- Not coupled to any provider. Although we recommend the models we provide through [CodingSoft Zen](https://codingsoft.org/zen), CodingSoft can be used with Claude, OpenAI, Google, or even local models. As models evolve, the gaps between them will close and pricing will drop, so being provider-agnostic is important.
+- Not coupled to any provider. Although we recommend the models we provide through [CodingSoft Zen](https://opencoding.vercel.app/zen), CodingSoft can be used with Claude, OpenAI, Google, or even local models. As models evolve, the gaps between them will close and pricing will drop, so being provider-agnostic is important.
 - Out-of-the-box LSP support
 - A focus on TUI. CodingSoft is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
 - A client/server architecture. This, for example, can allow CodingSoft to run on your computer while you drive it remotely from a mobile app, meaning that the TUI frontend is just one of the possible clients.
