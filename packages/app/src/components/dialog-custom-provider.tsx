@@ -1,18 +1,17 @@
-import { Button } from "@codingsoft-ai/ui/button"
-import { useDialog } from "@codingsoft-ai/ui/context/dialog"
-import { Dialog } from "@codingsoft-ai/ui/dialog"
-import { IconButton } from "@codingsoft-ai/ui/icon-button"
-import { ProviderIcon } from "@codingsoft-ai/ui/provider-icon"
+import { Button } from "@opencode-ai/ui/button"
+import { useDialog } from "@opencode-ai/ui/context/dialog"
+import { Dialog } from "@opencode-ai/ui/dialog"
+import { IconButton } from "@opencode-ai/ui/icon-button"
+import { ProviderIcon } from "@opencode-ai/ui/provider-icon"
 import { useMutation } from "@tanstack/solid-query"
-import { TextField } from "@codingsoft-ai/ui/text-field"
-import { showToast } from "@codingsoft-ai/ui/toast"
+import { TextField } from "@opencode-ai/ui/text-field"
+import { showToast } from "@opencode-ai/ui/toast"
 import { batch, For } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import { Link } from "@/components/link"
 import { useGlobalSDK } from "@/context/global-sdk"
 import { useGlobalSync } from "@/context/global-sync"
 import { useLanguage } from "@/context/language"
-import { urls } from "@/utils/config"
 import { type FormState, headerRow, modelRow, validateCustomProvider } from "./dialog-custom-provider-form"
 import { DialogSelectProvider } from "./dialog-select-provider"
 
@@ -184,7 +183,7 @@ export function DialogCustomProvider(props: Props) {
         <form onSubmit={save} class="px-2.5 pb-6 flex flex-col gap-6">
           <p class="text-14-regular text-text-base">
             {language.t("provider.custom.description.prefix")}
-            <Link href={urls.customProvider} tabIndex={-1}>
+            <Link href="https://opencode.ai/docs/providers/#custom-provider" tabIndex={-1}>
               {language.t("provider.custom.description.link")}
             </Link>
             {language.t("provider.custom.description.suffix")}

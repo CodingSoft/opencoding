@@ -1,13 +1,13 @@
 import { Component, Show, createMemo, createResource, onMount, type JSX } from "solid-js"
 import { createStore } from "solid-js/store"
-import { Button } from "@codingsoft-ai/ui/button"
-import { Icon } from "@codingsoft-ai/ui/icon"
-import { Select } from "@codingsoft-ai/ui/select"
-import { Switch } from "@codingsoft-ai/ui/switch"
-import { TextField } from "@codingsoft-ai/ui/text-field"
-import { Tooltip } from "@codingsoft-ai/ui/tooltip"
-import { useTheme, type ColorScheme } from "@codingsoft-ai/ui/theme/context"
-import { showToast } from "@codingsoft-ai/ui/toast"
+import { Button } from "@opencode-ai/ui/button"
+import { Icon } from "@opencode-ai/ui/icon"
+import { Select } from "@opencode-ai/ui/select"
+import { Switch } from "@opencode-ai/ui/switch"
+import { TextField } from "@opencode-ai/ui/text-field"
+import { Tooltip } from "@opencode-ai/ui/tooltip"
+import { useTheme, type ColorScheme } from "@opencode-ai/ui/theme/context"
+import { showToast } from "@opencode-ai/ui/toast"
 import { useLanguage } from "@/context/language"
 import { usePlatform } from "@/context/platform"
 import {
@@ -20,7 +20,6 @@ import {
   useSettings,
 } from "@/context/settings"
 import { playSoundById, SOUND_OPTIONS } from "@/utils/sound"
-import { urls } from "@/utils/config"
 import { Link } from "./link"
 import { SettingsList } from "./settings-list"
 
@@ -297,7 +296,7 @@ export const SettingsGeneral: Component = () => {
           description={
             <>
               {language.t("settings.general.row.theme.description")}{" "}
-              <Link href={urls.themes}>{language.t("common.learnMore")}</Link>
+              <Link href="https://opencode.ai/docs/themes/">{language.t("common.learnMore")}</Link>
             </>
           }
         >

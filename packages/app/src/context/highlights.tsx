@@ -1,14 +1,13 @@
 import { createEffect, onCleanup } from "solid-js"
 import { createStore } from "solid-js/store"
-import { createSimpleContext } from "@codingsoft-ai/ui/context"
-import { useDialog } from "@codingsoft-ai/ui/context/dialog"
+import { createSimpleContext } from "@opencode-ai/ui/context"
+import { useDialog } from "@opencode-ai/ui/context/dialog"
 import { usePlatform } from "@/context/platform"
 import { useSettings } from "@/context/settings"
 import { persisted } from "@/utils/persist"
-import { urls } from "@/utils/config"
 import { DialogReleaseNotes, type Highlight } from "@/components/dialog-release-notes"
 
-const CHANGELOG_URL = urls.changelog
+const CHANGELOG_URL = "https://opencode.ai/changelog.json"
 
 type Store = {
   version?: string
