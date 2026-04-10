@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 /**
- * Demostración de ASCII Logos de OpenCoding
+ * Demostración de ASCII Logos de CodingSoft
  *
  * Uso:
  * bun run packages/codingsoft/src/assets/demo.ts
@@ -12,7 +12,7 @@
 import { printLogo, getLogo, getAllLogos, supportsColor } from "./codingsoft-logo"
 
 console.log("\n\x1b[1m\x1b[36m╔══════════════════════════════════════════════════════════════╗\x1b[0m")
-console.log("\x1b[1m\x1b[36m║     OpenCoding ASCII Logo - Demo                    ║\x1b[0m")
+console.log("\x1b[1m\x1b[36m║ CodingSoft ASCII Logo - Demo ║\x1b[0m")
 console.log("\x1b[1m\x1b[36m╚══════════════════════════════════════════════════════════════╝\x1b[0m\n")
 
 console.log(`Soporte de colores: ${supportsColor() ? "✅ Sí" : "❌ No"}\n`)
