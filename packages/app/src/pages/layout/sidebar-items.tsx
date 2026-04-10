@@ -45,9 +45,7 @@ export const ProjectIcon = (props: { project: LocalProject; class?: string; noti
         <Avatar
           fallback="CS"
           src={
-            props.project.id === CODINGSOFT_PROJECT_ID
-              ? urls.favicon
-              : (props.project.icon?.override ?? "/codingsoft-logo-light-square.png")
+            props.project.id === CODINGSOFT_PROJECT_ID ? urls.favicon : (props.project.icon?.override ?? "/favicon.svg")
           }
           {...getAvatarColors(props.project.icon?.color)}
           class="size-full rounded"
