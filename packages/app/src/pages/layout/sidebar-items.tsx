@@ -16,6 +16,7 @@ import { getAvatarColors, type LocalProject, useLayout } from "@/context/layout"
 import { useNotification } from "@/context/notification"
 import { usePermission } from "@/context/permission"
 import { messageAgentColor } from "@/utils/agent"
+import { urls } from "@/utils/config"
 import { sessionPermissionRequest } from "../session/composer/session-request-tree"
 import { hasProjectPermissions } from "./helpers"
 
@@ -45,7 +46,7 @@ export const ProjectIcon = (props: { project: LocalProject; class?: string; noti
           fallback="CS"
           src={
             props.project.id === CODINGSOFT_PROJECT_ID
-              ? "https://codingsoft.ai/favicon.svg"
+              ? urls.favicon
               : (props.project.icon?.override ?? "/codingsoft-logo-light-square.png")
           }
           {...getAvatarColors(props.project.icon?.color)}

@@ -6,6 +6,7 @@ import { createStore } from "solid-js/store"
 import { usePlatform } from "@/context/platform"
 import { useLanguage } from "@/context/language"
 import { Icon } from "@codingsoft-ai/ui/icon"
+import { urls } from "@/utils/config"
 import type { E2EWindow } from "@/testing/terminal"
 
 export type InitError = {
@@ -309,7 +310,7 @@ export const ErrorPage: Component<ErrorPageProps> = (props) => {
             <button
               type="button"
               class="flex items-center text-text-interactive-base gap-1"
-              onClick={() => platform.openLink("https://codingsoft.ai/desktop-feedback")}
+              onClick={() => platform.openLink(urls.desktopFeedback)}
             >
               <div>{language.t("error.page.report.discord")}</div>
               <Icon name="discord" class="text-text-interactive-base" />

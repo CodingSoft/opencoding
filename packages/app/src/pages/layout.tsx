@@ -51,6 +51,7 @@ import { Binary } from "@codingsoft-ai/util/binary"
 import { retry } from "@codingsoft-ai/util/retry"
 import { playSoundById } from "@/utils/sound"
 import { createAim } from "@/utils/aim"
+import { urls } from "@/utils/config"
 import { setNavigate } from "@/utils/notification-click"
 import { Worktree as WorktreeState } from "@/utils/worktree"
 import { setSessionHandoff } from "@/pages/session/handoff"
@@ -2370,7 +2371,7 @@ export default function Layout(props: ParentProps) {
       settingsKeybind={() => command.keybind("settings.open")}
       onOpenSettings={openSettings}
       helpLabel={() => language.t("sidebar.help")}
-      onOpenHelp={() => platform.openLink("https://codingsoft.ai/desktop-feedback")}
+      onOpenHelp={() => platform.openLink(urls.desktopFeedback)}
       renderPanel={() =>
         mobile ? <SidebarPanel project={currentProject} mobile /> : <SidebarPanel project={currentProject} merged />
       }

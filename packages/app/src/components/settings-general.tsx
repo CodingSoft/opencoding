@@ -20,6 +20,7 @@ import {
   useSettings,
 } from "@/context/settings"
 import { playSoundById, SOUND_OPTIONS } from "@/utils/sound"
+import { urls } from "@/utils/config"
 import { Link } from "./link"
 import { SettingsList } from "./settings-list"
 
@@ -296,7 +297,7 @@ export const SettingsGeneral: Component = () => {
           description={
             <>
               {language.t("settings.general.row.theme.description")}{" "}
-              <Link href="https://codingsoft.ai/docs/themes/">{language.t("common.learnMore")}</Link>
+              <Link href={urls.themes}>{language.t("common.learnMore")}</Link>
             </>
           }
         >
