@@ -1,6 +1,6 @@
-# OpenCode Desktop
+# CodingSoft Desktop
 
-Native OpenCode desktop app, built with Tauri v2.
+Native CodingSoft desktop app, built with Tauri v2.
 
 ## Prerequisites
 

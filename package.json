@@ -6,13 +6,15 @@
   "type": "module",
   "packageManager": "bun@1.3.10",
   "scripts": {
-    "dev": "bun run --cwd packages/opencode --conditions=browser src/index.ts",
+    "dev": "bun run --cwd packages/codingsoft --conditions=browser src/index.ts",
     "dev:desktop": "bun --cwd packages/desktop tauri dev",
     "dev:web": "bun --cwd packages/app dev",
     "dev:console": "ulimit -n 10240 2>/dev/null; bun run --cwd packages/console/app dev",
     "dev:storybook": "bun --cwd packages/storybook storybook",
     "typecheck": "bun turbo typecheck",
     "prepare": "husky",
+    "logo": "bun run packages/codingsoft/src/assets/demo.ts",
+    "logo:print": "bun run packages/codingsoft/src/assets/codingsoft-logo.ts",
     "random": "echo 'Random script'",
     "hello": "echo 'Hello World!'",
     "test": "echo 'do not run tests from root' && exit 1"
@@ -85,14 +87,14 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.933.0",
-    "@opencode-ai/plugin": "workspace:*",
-    "@opencode-ai/script": "workspace:*",
-    "@opencode-ai/sdk": "workspace:*",
+    "@codingsoft-ai/plugin": "workspace:*",
+    "@codingsoft-ai/script": "workspace:*",
+    "@codingsoft-ai/sdk": "workspace:*",
     "typescript": "catalog:"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CodingSoft/opencoding.git"
+    "url": "https://github.com/CodingSoft/codingsoft.git"
   },
   "license": "MIT",
   "prettier": {

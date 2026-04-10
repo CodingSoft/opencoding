@@ -1,11 +1,10 @@
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+
 use std::path::{Path, PathBuf};
 use tracing_appender::non_blocking::WorkerGuard;
 use tracing_subscriber::{EnvFilter, fmt, layer::SubscriberExt, util::SubscriberInitExt};
 
 const MAX_LOG_AGE_DAYS: u64 = 7;
-const TAIL_LINES: usize = 1000;
 
 static LOG_PATH: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
 
@@ -15,7 +14,7 @@ pub fn init(log_dir: &Path) -> WorkerGuard {
     cleanup(log_dir);
 
     let timestamp = chrono::Local::now().format("%Y-%m-%d_%H-%M-%S");
-    let filename = format!("opencode-desktop_{timestamp}.log");
+    let filename = format!("codingsoft-desktop_{timestamp}.log");
     let log_path = log_dir.join(&filename);
 
     LOG_PATH
@@ -27,9 +26,9 @@ pub fn init(log_dir: &Path) -> WorkerGuard {
 
     let filter = EnvFilter::try_from_default_env().unwrap_or_else(|_| {
         if cfg!(debug_assertions) {
-            EnvFilter::new("opencode_lib=debug,opencode_desktop=debug,sidecar=debug")
+            EnvFilter::new("codingsoft_lib=debug,codingsoft_desktop=debug,sidecar=debug")
         } else {
-            EnvFilter::new("opencode_lib=info,opencode_desktop=info,sidecar=info")
+            EnvFilter::new("codingsoft_lib=info,codingsoft_desktop=info,sidecar=info")
         }
     });
 
@@ -40,21 +39,6 @@ pub fn init(log_dir: &Path) -> WorkerGuard {
         .init();
 
     guard
-}
-
-pub fn tail() -> String {
-    let Some(path) = LOG_PATH.get() else {
-        return String::new();
-    };
-
-    let Ok(file) = File::open(path) else {
-        return String::new();
-    };
-
-    let lines: Vec<String> = BufReader::new(file).lines().map_while(Result::ok).collect();
-
-    let start = lines.len().saturating_sub(TAIL_LINES);
-    lines[start..].join("\n")
 }
 
 fn cleanup(log_dir: &Path) {

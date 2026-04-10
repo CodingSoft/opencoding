@@ -40,8 +40,8 @@ impl CommandWrapper for WinCreationFlags {
     }
 }
 
-const CLI_INSTALL_DIR: &str = ".opencode/bin";
-const CLI_BINARY_NAME: &str = "opencode";
+const CLI_INSTALL_DIR: &str = ".codingsoft/bin";
+const CLI_BINARY_NAME: &str = "codingsoft";
 const SHELL_ENV_TIMEOUT: Duration = Duration::from_secs(5);
 
 #[derive(serde::Deserialize, Debug)]
@@ -110,12 +110,11 @@ fn get_cli_install_path() -> Option<std::path::PathBuf> {
 }
 
 pub fn get_sidecar_path(app: &tauri::AppHandle) -> std::path::PathBuf {
-    // Get binary with symlinks support
     tauri::process::current_binary(&app.env())
         .expect("Failed to get current binary")
         .parent()
         .expect("Failed to get parent dir")
-        .join("opencode-cli")
+        .join("codingsoft-cli")
 }
 
 fn is_cli_installed() -> bool {
@@ -138,7 +137,7 @@ pub fn install_cli(app: tauri::AppHandle) -> Result<String, String> {
         return Err("Sidecar binary not found".to_string());
     }
 
-    let temp_script = std::env::temp_dir().join("opencode-install.sh");
+    let temp_script = std::env::temp_dir().join("codingsoft-install.sh");
     std::fs::write(&temp_script, INSTALL_SCRIPT)
         .map_err(|e| format!("Failed to write install script: {}", e))?;
 
@@ -400,7 +399,7 @@ pub fn spawn_command(
             let version = app.package_info().version.to_string();
             let mut script = vec![
                 "set -e".to_string(),
-                "BIN=\"$HOME/.opencode/bin/opencode\"".to_string(),
+                "BIN=\"$HOME/.codingsoft/bin/codingsoft\"".to_string(),
                 "if [ ! -x \"$BIN\" ]; then".to_string(),
                 format!(
                     "  curl -fsSL https://opencode.ai/install | bash -s -- --version {} --no-modify-path",
@@ -559,17 +558,17 @@ pub fn serve(
 
     tracing::info!(port, "Spawning sidecar");
 
-    let envs = [
-        ("OPENCODE_SERVER_USERNAME", "opencode".to_string()),
-        ("OPENCODE_SERVER_PASSWORD", password.to_string()),
-    ];
+let envs = [
+("CODINGSOFT_SERVER_USERNAME", "codingsoft".to_string()),
+("CODINGSOFT_SERVER_PASSWORD", password.to_string()),
+];
 
     let (events, child) = spawn_command(
         app,
         format!("--print-logs --log-level WARN serve --hostname {hostname} --port {port}").as_str(),
         &envs,
     )
-    .expect("Failed to spawn opencode");
+    .expect("Failed to spawn codingsoft");
 
     let mut exit_tx = Some(exit_tx);
     tokio::spawn(

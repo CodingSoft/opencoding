@@ -23,9 +23,10 @@ use std::{
     time::Duration,
 };
 use tauri::{AppHandle, Listener, Manager, RunEvent, State, ipc::Channel};
+use tauri_specta::Event;
 #[cfg(any(target_os = "linux", all(debug_assertions, windows)))]
 use tauri_plugin_deep_link::DeepLinkExt;
-use tauri_specta::Event;
+
 use tokio::{
     sync::{oneshot, watch},
     time::{sleep, timeout},
@@ -305,10 +306,10 @@ pub fn run() {
     #[cfg(debug_assertions)] // <- Only export on non-release builds
     export_types(&builder);
 
-    #[cfg(all(target_os = "macos", not(debug_assertions)))]
-    let _ = std::process::Command::new("killall")
-        .arg("opencode-cli")
-        .output();
+#[cfg(all(target_os = "macos", not(debug_assertions)))]
+let _ = std::process::Command::new("killall")
+    .arg("codingsoft-cli")
+    .output();
 
     let mut builder = tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
@@ -375,7 +376,7 @@ fn make_specta_builder() -> tauri_specta::Builder<tauri::Wry> {
         // Then register them (separated by a comma)
         .commands(tauri_specta::collect_commands![
             kill_sidecar,
-            cli::install_cli,
+
             await_initialization,
             server::get_default_server_url,
             server::set_default_server_url,
@@ -437,7 +438,7 @@ async fn initialize(app: AppHandle) {
     let (ready_tx, ready_rx) = oneshot::channel();
     let _ = ready_tx.send(ServerReadyData {
         url: url.clone(),
-        username: Some("opencode".to_string()),
+        username: Some("codingsoft".to_string()),
         password: Some(password),
     });
     app.manage(SidecarReady(ready_rx.shared()));
@@ -453,7 +454,7 @@ async fn initialize(app: AppHandle) {
     let needs_migration = !sqlite_file_exists();
     let sqlite_done = needs_migration.then(|| {
         tracing::info!(
-            path = %opencode_db_path().expect("failed to get db path").display(),
+            path = %codingsoft_db_path().expect("failed to get db path").display(),
             "Sqlite file not found, waiting for it to be generated"
         );
 
@@ -549,9 +550,9 @@ fn spawn_cli_sync_task(app: AppHandle) {
 
 
 fn get_sidecar_port() -> u32 {
-    option_env!("OPENCODE_PORT")
+    option_env!("CODINGSOFT_PORT")
         .map(|s| s.to_string())
-        .or_else(|| std::env::var("OPENCODE_PORT").ok())
+        .or_else(|| std::env::var("CODINGSOFT_PORT").ok())
         .and_then(|port_str| port_str.parse().ok())
         .unwrap_or_else(|| {
             TcpListener::bind("127.0.0.1:0")
@@ -563,14 +564,14 @@ fn get_sidecar_port() -> u32 {
 }
 
 fn sqlite_file_exists() -> bool {
-    let Ok(path) = opencode_db_path() else {
+    let Ok(path) = codingsoft_db_path() else {
         return true;
     };
 
     path.exists()
 }
 
-fn opencode_db_path() -> Result<PathBuf, &'static str> {
+fn codingsoft_db_path() -> Result<PathBuf, &'static str> {
     let xdg_data_home = env::var_os("XDG_DATA_HOME").filter(|v| !v.is_empty());
 
     let data_home = match xdg_data_home {
@@ -581,7 +582,7 @@ fn opencode_db_path() -> Result<PathBuf, &'static str> {
         }
     };
 
-    Ok(data_home.join("opencode").join("opencode.db"))
+    Ok(data_home.join("codingsoft").join("codingsoft.db"))
 }
 
 // Creates a `once` listener for the specified event and returns a future that resolves

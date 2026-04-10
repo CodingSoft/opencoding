@@ -42,6 +42,34 @@
 
 ---
 
+### ASCII Logo
+
+OpenCoding también está disponible en formato ASCII para terminal:
+
+```
+   ╭───────╮
+  ╱   ╭─╮   ╲     ██████╗   ██████╗   ██████╗
+ │   ╭╯ ╰╮   │   ██╔════╝   ██╔══██╗  ██╔══██╗  ██╔════╝
+ │   │ ● │   │   ██║        ██████║   ██████╔╝  █████╗
+  ╲   ╰─╯   ╱    ██║        ██╔══██╗  ██╔══██╗  ██╔══╝
+   ╰───────╯     ╚██████╗   ██║  ██║  ██████╔╝  ███████╗
+                   ╚═════╝   ╚═╝  ╚═╝  ╚═════╝   ╚══════╝
+```
+
+**Uso en tu código:**
+
+```typescript
+import { printLogo } from "@codingsoft/codingsoft/assets"
+
+printLogo("full") // Imprimir logo completo
+printLogo("minimal") // Versión minimalista
+printLogo("splash") // Splash screen
+```
+
+Para más detalles, ver [packages/codingsoft/src/assets/README.md](packages/codingsoft/src/assets/ASCII-LOGO-README.md).
+
+---
+
 ### Installation
 
 ```bash

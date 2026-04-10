@@ -1,5 +1,5 @@
-import { getFilename } from "@opencode-ai/util/path"
-import { type Session } from "@opencode-ai/sdk/v2/client"
+import { getFilename } from "@codingsoft-ai/util/path"
+import { type Session } from "@codingsoft-ai/sdk/v2/client"
 
 type SessionStore = {
   session?: Session[]

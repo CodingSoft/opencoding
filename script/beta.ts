@@ -3,7 +3,7 @@
 import { $ } from "bun"
 import fs from "fs/promises"
 
-const model = "opencode/gpt-5.3-codex"
+const model = "opencoding/gpt-5.3-codex"
 
 interface PR {
   number: number
@@ -122,9 +122,9 @@ async function fix(pr: PR, files: string[], prs: PR[], applied: number[], idx: n
   ].join("\n")
 
   try {
-    await $`opencode run -m ${model} ${prompt}`
+    await $`opencoding run -m ${model} ${prompt}`
   } catch (err) {
-    console.log(`  opencode failed: ${err}`)
+    console.log(`  opencoding failed: ${err}`)
     return false
   }
 
@@ -156,7 +156,7 @@ async function smoke(prs: PR[], applied: number[]) {
   ].join("\n")
 
   try {
-    await $`opencode run -m ${model} ${prompt}`
+    await $`opencoding run -m ${model} ${prompt}`
   } catch (err) {
     console.log(`Smoke fix failed: ${err}`)
     return false

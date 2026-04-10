@@ -27,7 +27,7 @@ if (values.help) {
   console.log(`
 Usage: bun script/changelog.ts [options]
 
-Generates UPCOMING_CHANGELOG.md by running the opencode changelog command.
+Generates UPCOMING_CHANGELOG.md by running the opencoding changelog command.
 
 Options:
   -f, --from <version>   Starting version (default: latest non-draft GitHub release)
@@ -48,7 +48,7 @@ Examples:
 await rm(file, { force: true })
 
 const quiet = values.quiet
-const cmd = ["opencode", "run"]
+const cmd = ["opencoding", "run"]
 cmd.push("--variant", values.variant)
 cmd.push("--command", "changelog", "--", ...args)
 

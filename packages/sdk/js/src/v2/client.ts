@@ -20,8 +20,8 @@ function rewrite(request: Request, values: { directory?: string; workspace?: str
   let changed = false
 
   for (const [name, key] of [
-    ["x-opencode-directory", "directory"],
-    ["x-opencode-workspace", "workspace"],
+    ["x-codingsoft-directory", "directory"],
+    ["x-codingsoft-workspace", "workspace"],
   ] as const) {
     const value = pick(
       request.headers.get(name),
@@ -38,12 +38,14 @@ function rewrite(request: Request, values: { directory?: string; workspace?: str
   if (!changed) return request
 
   const next = new Request(url, request)
-  next.headers.delete("x-opencode-directory")
-  next.headers.delete("x-opencode-workspace")
+  next.headers.delete("x-codingsoft-directory")
+  next.headers.delete("x-codingsoft-workspace")
   return next
 }
 
-export function createOpencodeClient(config?: Config & { directory?: string; experimental_workspaceID?: string }) {
+export function createOpencodingClient(
+  config?: Config & { directory?: string; experimental_workspaceID?: string },
+): OpencodeClient {
   if (!config?.fetch) {
     const customFetch: any = (req: any) => {
       // @ts-ignore
@@ -59,14 +61,14 @@ export function createOpencodeClient(config?: Config & { directory?: string; exp
   if (config?.directory) {
     config.headers = {
       ...config.headers,
-      "x-opencode-directory": encodeURIComponent(config.directory),
+      "x-codingsoft-directory": encodeURIComponent(config.directory),
     }
   }
 
   if (config?.experimental_workspaceID) {
     config.headers = {
       ...config.headers,
-      "x-opencode-workspace": config.experimental_workspaceID,
+      "x-codingsoft-workspace": config.experimental_workspaceID,
     }
   }
 

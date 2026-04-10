@@ -2,7 +2,7 @@
 
 import path from "path"
 import { pathToFileURL } from "bun"
-import { createOpencode } from "@opencode-ai/sdk"
+import { createOpencoding } from "@codingsoft-ai/sdk"
 import { parseArgs } from "util"
 
 async function main() {
@@ -35,7 +35,7 @@ Examples:
     process.exit(1)
   }
 
-  const opencode = await createOpencode({ port: 0 })
+  const opencoding = await createOpencoding({ port: 0 })
 
   try {
     const parts: Array<{ type: "text"; text: string } | { type: "file"; url: string; filename: string; mime: string }> =
@@ -58,8 +58,8 @@ Examples:
 
     parts.push({ type: "text", text: message })
 
-    const session = await opencode.client.session.create()
-    const result = await opencode.client.session
+    const session = await opencoding.client.session.create()
+    const result = await opencoding.client.session
       .prompt({
         path: { id: session.data!.id },
         body: {
@@ -68,11 +68,14 @@ Examples:
         },
         signal: AbortSignal.timeout(120_000),
       })
-      .then((x) => x.data?.parts?.find((y) => y.type === "text")?.text ?? "")
+      .then(
+        (response: { data?: { parts?: Array<{ type: string; text: string }> } }) =>
+          response.data?.parts?.find((part) => part.type === "text")?.text ?? "",
+      )
 
     console.log(result.trim())
   } finally {
-    opencode.server.close()
+    opencoding.server.close()
   }
 }
 
