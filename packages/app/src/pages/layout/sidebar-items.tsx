@@ -42,9 +42,11 @@ export const ProjectIcon = (props: { project: LocalProject; class?: string; noti
     <div class={`relative size-8 shrink-0 rounded ${props.class ?? ""}`}>
       <div class="size-full rounded overflow-clip">
         <Avatar
-          fallback={name()}
+          fallback="CS"
           src={
-            props.project.id === CODINGSOFT_PROJECT_ID ? "https://codingsoft.ai/favicon.svg" : props.project.icon?.override
+            props.project.id === CODINGSOFT_PROJECT_ID
+              ? "https://codingsoft.ai/favicon.svg"
+              : (props.project.icon?.override ?? "/codingsoft-logo-light-square.png")
           }
           {...getAvatarColors(props.project.icon?.color)}
           class="size-full rounded"
