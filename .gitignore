@@ -29,3 +29,12 @@ UPCOMING_CHANGELOG.md
 logs/
 *.bun-build
 tsconfig.tsbuildinfo
+
+# Branding assets temporales
+/assets/
+codingsoft-logo*.png
+codingsoft-logo*.svg
+convert-*.sh
+generate-*.ts
+*-ascii*.txt
+*-ascii*.ts
