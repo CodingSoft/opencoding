@@ -1,18 +1,8 @@
-import logoLight from "../asset/brand/codingsoft-symbol.svg"
-import logoDark from "../asset/brand/codingsoft-symbol.svg"
-import copyLogoLight from "../asset/lander/logo-light.svg"
-import copyLogoDark from "../asset/lander/logo-dark.svg"
-import copyWordmarkLight from "../asset/lander/wordmark-light.svg"
-import copyWordmarkDark from "../asset/lander/wordmark-dark.svg"
-import copyBrandAssetsLight from "../asset/lander/brand-assets-light.svg"
-import copyBrandAssetsDark from "../asset/lander/brand-assets-dark.svg"
-
-// SVG files for copying (separate from button icons)
-// Replace these with your actual SVG files for copying
-import copyLogoSvgLight from "../asset/lander/codingsoft-logo-light.svg"
-import copyLogoSvgDark from "../asset/lander/codingsoft-logo-dark.svg"
-import copyWordmarkSvgLight from "../asset/lander/codingsoft-wordmark-light.svg"
-import copyWordmarkSvgDark from "../asset/lander/codingsoft-wordmark-dark.svg"
+// Single source of truth - usar los mismos archivos para todo
+import logoLight from "../asset/brand/codingsoft-logo-light.svg"
+import logoDark from "../asset/brand/codingsoft-logo-dark.svg"
+import logoLightPng from "../asset/brand/codingsoft-logo-light.png"
+import logoDarkPng from "../asset/brand/codingsoft-logo-dark.png"
 import { A, createAsync, useNavigate } from "@solidjs/router"
 import { createMemo, Match, Show, Switch } from "solid-js"
 import { createStore } from "solid-js/store"
@@ -101,7 +91,7 @@ export function Header(props: { zen?: boolean; go?: boolean; hideGetStarted?: bo
   const copyWordmarkToClipboard = async () => {
     try {
       const isDark = isDarkMode()
-      const wordmarkSvgPath = isDark ? copyWordmarkSvgDark : copyWordmarkSvgLight
+      const wordmarkSvgPath = isDark ? logoDark : logoLight
       const wordmarkSvg = await fetchSvgContent(wordmarkSvgPath)
       await navigator.clipboard.writeText(wordmarkSvg)
     } catch (err) {
@@ -112,7 +102,7 @@ export function Header(props: { zen?: boolean; go?: boolean; hideGetStarted?: bo
   const copyLogoToClipboard = async () => {
     try {
       const isDark = isDarkMode()
-      const logoSvgPath = isDark ? copyLogoSvgDark : copyLogoSvgLight
+      const logoSvgPath = isDark ? logoDark : logoLight
       const logoSvg = await fetchSvgContent(logoSvgPath)
       await navigator.clipboard.writeText(logoSvg)
     } catch (err) {
@@ -135,18 +125,18 @@ export function Header(props: { zen?: boolean; go?: boolean; hideGetStarted?: bo
           style={`left: ${store.contextMenuPosition.x}px; top: ${store.contextMenuPosition.y}px;`}
         >
           <button class="context-menu-item" onClick={copyLogoToClipboard}>
-            <img data-slot="copy light" src={copyLogoLight} alt="" />
-            <img data-slot="copy dark" src={copyLogoDark} alt="" />
+            <img data-slot="copy light" src={logoLightPng} alt="" />
+            <img data-slot="copy dark" src={logoDarkPng} alt="" />
             {i18n.t("nav.context.copyLogo")}
           </button>
           <button class="context-menu-item" onClick={copyWordmarkToClipboard}>
-            <img data-slot="copy light" src={copyWordmarkLight} alt="" />
-            <img data-slot="copy dark" src={copyWordmarkDark} alt="" />
+            <img data-slot="copy light" src={logoLightPng} alt="" />
+            <img data-slot="copy dark" src={logoDarkPng} alt="" />
             {i18n.t("nav.context.copyWordmark")}
           </button>
           <button class="context-menu-item" onClick={() => navigate(language.route("/brand"))}>
-            <img data-slot="copy light" src={copyBrandAssetsLight} alt="" />
-            <img data-slot="copy dark" src={copyBrandAssetsDark} alt="" />
+            <img data-slot="copy light" src={logoLightPng} alt="" />
+            <img data-slot="copy dark" src={logoDarkPng} alt="" />
             {i18n.t("nav.context.brandAssets")}
           </button>
         </div>

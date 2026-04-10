@@ -19,14 +19,6 @@ import logoDarkSvg from "../../../console/app/src/asset/brand/codingsoft-logo-da
 import logoLightSquareSvg from "../../../console/app/src/asset/brand/codingsoft-logo-light-square.svg"
 import logoDarkSquareSvg from "../../../console/app/src/asset/brand/codingsoft-logo-dark-square.svg"
 
-// Wordmarks (Text Only)
-import wordmarkLightSvg from "../../../console/app/src/asset/brand/codingsoft-wordmark-light.svg"
-import wordmarkDarkSvg from "../../../console/app/src/asset/brand/codingsoft-wordmark-dark.svg"
-
-// Simple Wordmarks
-import wordmarkSimpleLightSvg from "../../../console/app/src/asset/brand/codingsoft-wordmark-simple-light.svg"
-import wordmarkSimpleDarkSvg from "../../../console/app/src/asset/brand/codingsoft-wordmark-simple-dark.svg"
-
 // Symbol Only
 import symbolSvg from "../../../console/app/src/asset/brand/codingsoft-symbol.svg"
 
@@ -41,14 +33,6 @@ import logoDarkPng from "../../../console/app/src/asset/brand/codingsoft-logo-da
 // Square Logos
 import logoLightSquarePng from "../../../console/app/src/asset/brand/codingsoft-logo-light-square.png"
 import logoDarkSquarePng from "../../../console/app/src/asset/brand/codingsoft-logo-dark-square.png"
-
-// Wordmarks
-import wordmarkLightPng from "../../../console/app/src/asset/brand/codingsoft-wordmark-light.png"
-import wordmarkDarkPng from "../../../console/app/src/asset/brand/codingsoft-wordmark-dark.png"
-
-// Simple Wordmarks
-import wordmarkSimpleLightPng from "../../../console/app/src/asset/brand/codingsoft-wordmark-simple-light.png"
-import wordmarkSimpleDarkPng from "../../../console/app/src/asset/brand/codingsoft-wordmark-simple-dark.png"
 
 // Symbol
 import symbolPng from "../../../console/app/src/asset/brand/codingsoft-symbol.png"
@@ -67,7 +51,7 @@ const logoSplashPng = logoSplashLegacy
 // Type Definitions
 // ============================================================================
 
-export type LogoVariant = "full" | "square" | "wordmark" | "wordmarkSimple" | "symbol"
+export type LogoVariant = "full" | "square" | "symbol"
 export type LogoFormat = "svg" | "png"
 export type Theme = "light" | "dark"
 
@@ -94,14 +78,6 @@ export const svgAssets = {
     light: logoLightSquareSvg,
     dark: logoDarkSquareSvg,
   },
-  wordmark: {
-    light: wordmarkLightSvg,
-    dark: wordmarkDarkSvg,
-  },
-  wordmarkSimple: {
-    light: wordmarkSimpleLightSvg,
-    dark: wordmarkSimpleDarkSvg,
-  },
   symbol: {
     light: symbolSvg,
     dark: symbolSvg, // Symbol is theme-neutral
@@ -119,14 +95,6 @@ export const pngAssets = {
   square: {
     light: logoLightSquarePng,
     dark: logoDarkSquarePng,
-  },
-  wordmark: {
-    light: wordmarkLightPng,
-    dark: wordmarkDarkPng,
-  },
-  wordmarkSimple: {
-    light: wordmarkSimpleLightPng,
-    dark: wordmarkSimpleDarkPng,
   },
   symbol: {
     light: symbolPng,
@@ -173,8 +141,6 @@ export function getLogosByTheme(theme: Theme, format: LogoFormat = "svg") {
   return {
     full: assets.full[theme],
     square: assets.square[theme],
-    wordmark: assets.wordmark[theme],
-    wordmarkSimple: assets.wordmarkSimple[theme],
     symbol: assets.symbol[theme],
   }
 }
@@ -200,10 +166,6 @@ export {
   logoDarkSvg,
   logoLightSquareSvg,
   logoDarkSquareSvg,
-  wordmarkLightSvg,
-  wordmarkDarkSvg,
-  wordmarkSimpleLightSvg,
-  wordmarkSimpleDarkSvg,
   symbolSvg,
 
   // PNGs
@@ -211,10 +173,6 @@ export {
   logoDarkPng,
   logoLightSquarePng,
   logoDarkSquarePng,
-  wordmarkLightPng,
-  wordmarkDarkPng,
-  wordmarkSimpleLightPng,
-  wordmarkSimpleDarkPng,
   symbolPng,
 
   // Legacy
