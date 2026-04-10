@@ -1,14 +1,14 @@
-import type { ProviderAuthAuthorization, ProviderAuthMethod } from "@opencode-ai/sdk/v2/client"
-import { Button } from "@opencode-ai/ui/button"
-import { useDialog } from "@opencode-ai/ui/context/dialog"
-import { Dialog } from "@opencode-ai/ui/dialog"
-import { Icon } from "@opencode-ai/ui/icon"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { List, type ListRef } from "@opencode-ai/ui/list"
-import { ProviderIcon } from "@opencode-ai/ui/provider-icon"
-import { Spinner } from "@opencode-ai/ui/spinner"
-import { TextField } from "@opencode-ai/ui/text-field"
-import { showToast } from "@opencode-ai/ui/toast"
+import type { ProviderAuthAuthorization, ProviderAuthMethod } from "@codingsoft-ai/sdk/v2/client"
+import { Button } from "@codingsoft-ai/ui/button"
+import { useDialog } from "@codingsoft-ai/ui/context/dialog"
+import { Dialog } from "@codingsoft-ai/ui/dialog"
+import { Icon } from "@codingsoft-ai/ui/icon"
+import { IconButton } from "@codingsoft-ai/ui/icon-button"
+import { List, type ListRef } from "@codingsoft-ai/ui/list"
+import { ProviderIcon } from "@codingsoft-ai/ui/provider-icon"
+import { Spinner } from "@codingsoft-ai/ui/spinner"
+import { TextField } from "@codingsoft-ai/ui/text-field"
+import { showToast } from "@codingsoft-ai/ui/toast"
 import { createEffect, createMemo, createResource, Match, onCleanup, onMount, Switch } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import { Link } from "@/components/link"
@@ -428,7 +428,7 @@ export function DialogConnectProvider(props: { provider: string }) {
               <div class="text-14-regular text-text-base">{language.t("provider.connect.opencodeZen.line2")}</div>
               <div class="text-14-regular text-text-base">
                 {language.t("provider.connect.opencodeZen.visit.prefix")}
-                <Link href="https://opencode.ai/zen" tabIndex={-1}>
+                <Link href="https://codingsoft.ai/zen" tabIndex={-1}>
                   {language.t("provider.connect.opencodeZen.visit.link")}
                 </Link>
                 {language.t("provider.connect.opencodeZen.visit.suffix")}

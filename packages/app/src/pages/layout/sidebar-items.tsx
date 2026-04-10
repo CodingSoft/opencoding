@@ -1,13 +1,13 @@
-import type { Message, Session, TextPart, UserMessage } from "@opencode-ai/sdk/v2/client"
-import { Avatar } from "@opencode-ai/ui/avatar"
-import { HoverCard } from "@opencode-ai/ui/hover-card"
-import { Icon } from "@opencode-ai/ui/icon"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { MessageNav } from "@opencode-ai/ui/message-nav"
-import { Spinner } from "@opencode-ai/ui/spinner"
-import { Tooltip } from "@opencode-ai/ui/tooltip"
-import { base64Encode } from "@opencode-ai/util/encode"
-import { getFilename } from "@opencode-ai/util/path"
+import type { Message, Session, TextPart, UserMessage } from "@codingsoft-ai/sdk/v2/client"
+import { Avatar } from "@codingsoft-ai/ui/avatar"
+import { HoverCard } from "@codingsoft-ai/ui/hover-card"
+import { Icon } from "@codingsoft-ai/ui/icon"
+import { IconButton } from "@codingsoft-ai/ui/icon-button"
+import { MessageNav } from "@codingsoft-ai/ui/message-nav"
+import { Spinner } from "@codingsoft-ai/ui/spinner"
+import { Tooltip } from "@codingsoft-ai/ui/tooltip"
+import { base64Encode } from "@codingsoft-ai/util/encode"
+import { getFilename } from "@codingsoft-ai/util/path"
 import { A, useNavigate, useParams } from "@solidjs/router"
 import { type Accessor, createMemo, For, type JSX, Match, onCleanup, Show, Switch } from "solid-js"
 import { useGlobalSync } from "@/context/global-sync"
@@ -19,7 +19,7 @@ import { messageAgentColor } from "@/utils/agent"
 import { sessionPermissionRequest } from "../session/composer/session-request-tree"
 import { hasProjectPermissions } from "./helpers"
 
-const OPENCODE_PROJECT_ID = "4b0ea68d7af9a6031a7ffda7ad66e0cb83315750"
+const CODINGSOFT_PROJECT_ID = "4b0ea68d7af9a6031a7ffda7ad66e0cb83315750"
 
 export const ProjectIcon = (props: { project: LocalProject; class?: string; notify?: boolean }): JSX.Element => {
   const globalSync = useGlobalSync()
@@ -42,9 +42,11 @@ export const ProjectIcon = (props: { project: LocalProject; class?: string; noti
     <div class={`relative size-8 shrink-0 rounded ${props.class ?? ""}`}>
       <div class="size-full rounded overflow-clip">
         <Avatar
-          fallback={name()}
+          fallback="CS"
           src={
-            props.project.id === OPENCODE_PROJECT_ID ? "https://opencode.ai/favicon.svg" : props.project.icon?.override
+            props.project.id === CODINGSOFT_PROJECT_ID
+              ? "/favicon.svg"
+              : (props.project.icon?.override ?? "/codingsoft-logo-light-square.png")
           }
           {...getAvatarColors(props.project.icon?.color)}
           class="size-full rounded"
