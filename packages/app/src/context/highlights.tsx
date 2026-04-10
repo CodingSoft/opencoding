@@ -5,9 +5,10 @@ import { useDialog } from "@codingsoft-ai/ui/context/dialog"
 import { usePlatform } from "@/context/platform"
 import { useSettings } from "@/context/settings"
 import { persisted } from "@/utils/persist"
+import { urls } from "@/utils/urls"
 import { DialogReleaseNotes, type Highlight } from "@/components/dialog-release-notes"
 
-const CHANGELOG_URL = "https://codingsoft.ai/changelog.json"
+const CHANGELOG_URL = urls.changelog
 
 type Store = {
   version?: string
