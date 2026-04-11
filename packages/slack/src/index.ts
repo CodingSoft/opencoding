@@ -1,5 +1,5 @@
 import { App } from "@slack/bolt"
-import { createCodingSoftTui, type ToolPart } from "@codingsoft-ai/sdk"
+import { createOpencoding, type ToolPart } from "@codingsoft-ai/sdk"
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -14,7 +14,7 @@ console.log("- Signing secret present:", !!process.env.SLACK_SIGNING_SECRET)
 console.log("- App token present:", !!process.env.SLACK_APP_TOKEN)
 
 console.log("🚀 Starting codingsoft server...")
-const codingsoft = await createCodingSoftTui({
+const codingsoft = await createOpencoding({
   port: 0,
 })
 console.log("✅ CodingSoft server ready")
