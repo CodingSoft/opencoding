@@ -12,14 +12,12 @@
 
 export {
   // Logos
-  logoFull,
+  logoFull as logoWithSlogan,
   logoBlue,
-  logoMinimal,
-  logoWithSlogan,
-  logoSplash,
-  symbolOnly,
-  logoBanner,
-  logoNoColor,
+  logoMinimal as symbolOnly,
+  logoBordered as logoBanner,
+  logoWhite as logoNoColor,
+  logoCompact as logoSplash,
 
   // Funciones
   getLogo,
@@ -27,12 +25,12 @@ export {
   getAllLogos,
   supportsColor,
 
-  // Tipos
-  type LogoType,
-
   // Utilidades
   colors,
 } from "./codingsoft-logo"
+
+// Tipo LogoType
+export type LogoType = keyof typeof import("./codingsoft-logo").logo
 
 // Re-exportar todo por defecto
 export { default } from "./codingsoft-logo"
