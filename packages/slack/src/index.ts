@@ -1,5 +1,5 @@
 import { App } from "@slack/bolt"
-import { createOpencode, type ToolPart } from "@codingsoft-ai/sdk"
+import { createCodingSoftTui, type ToolPart } from "@codingsoft-ai/sdk"
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -14,10 +14,10 @@ console.log("- Signing secret present:", !!process.env.SLACK_SIGNING_SECRET)
 console.log("- App token present:", !!process.env.SLACK_APP_TOKEN)
 
 console.log("🚀 Starting codingsoft server...")
-const codingsoft = await createOpencode({
+const codingsoft = await createCodingSoftTui({
   port: 0,
 })
-console.log("✅ Opencode server ready")
+console.log("✅ CodingSoft server ready")
 
 const sessions = new Map<string, { client: any; server: any; sessionId: string; channel: string; thread: string }>()
 ;(async () => {
@@ -72,7 +72,7 @@ app.message(async ({ message, say }) => {
   let session = sessions.get(sessionKey)
 
   if (!session) {
-    console.log("🆕 Creating new codingsoft session...")
+    console.log("🆕 Creating new CodingSoft session...")
     const { client, server } = codingsoft
 
     const createResult = await client.session.create({
@@ -88,7 +88,7 @@ app.message(async ({ message, say }) => {
       return
     }
 
-    console.log("✅ Created codingsoft session:", createResult.data.id)
+    console.log("✅ Created CodingSoft session:", createResult.data.id)
 
     session = { client, server, sessionId: createResult.data.id, channel, thread }
     sessions.set(sessionKey, session)
@@ -101,13 +101,13 @@ app.message(async ({ message, say }) => {
     }
   }
 
-  console.log("📝 Sending to codingsoft:", message.text)
+  console.log("📝 Sending to CodingSoft:", message.text)
   const result = await session.client.session.prompt({
     path: { id: session.sessionId },
     body: { parts: [{ type: "text", text: message.text }] },
   })
 
-  console.log("📤 Opencode response:", JSON.stringify(result, null, 2))
+  console.log("📤 CodingSoft response:", JSON.stringify(result, null, 2))
 
   if (result.error) {
     console.error("❌ Failed to send message:", result.error)
