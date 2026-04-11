@@ -3,7 +3,6 @@ import { openUrl } from "@tauri-apps/plugin-opener"
 import { type as ostype } from "@tauri-apps/plugin-os"
 import { relaunch } from "@tauri-apps/plugin-process"
 import { commands } from "./bindings"
-import { installCli } from "./cli"
 import { initI18n, t } from "./i18n"
 import { runUpdater, UPDATER_ENABLED } from "./updater"
 
