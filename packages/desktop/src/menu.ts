@@ -25,10 +25,7 @@ export async function createMenu(trigger: (id: string) => void) {
             action: () => runUpdater({ alertOnFail: true }),
             text: t("desktop.menu.checkForUpdates"),
           }),
-          await MenuItem.new({
-            action: () => installCli(),
-            text: t("desktop.menu.installCli"),
-          }),
+
           await MenuItem.new({
             action: async () => window.location.reload(),
             text: t("desktop.menu.reloadWebview"),
